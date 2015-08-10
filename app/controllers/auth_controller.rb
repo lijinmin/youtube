@@ -10,7 +10,7 @@ class AuthController < ApplicationController
         scope: "https://www.googleapis.com/auth/youtube",
         token_credential_uri: "https://accounts.google.com/o/oauth2/token")
         options = {:response_type=>"code",approval_prompt: :force,access_type: :offline}
-        @res = client.authorization_uri().to_s
+        @res = client.authorization_uri(options).to_s
     end
 
     def oauth2callback
