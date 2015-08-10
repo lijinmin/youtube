@@ -22,9 +22,11 @@ class AuthController < ApplicationController
         if Code.first.blank?
              @code = Code.new(code: params[:code])
              @code.save
+         else
+            @code = Code.update(code: params[:code])
+            @code.save
         end
-        @code = Code.update(code: params[:code])
-        @code.save
+        
 
     end
     
