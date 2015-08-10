@@ -10,28 +10,17 @@ class AuthController < ApplicationController
         scope: "https://www.googleapis.com/auth/youtube",
         token_credential_uri: "https://accounts.google.com/o/oauth2/token")
         @res = client.authorization_uri().to_s
-        # @qr = RQRCode::QRCode.new( res, :size => 8, :level => :h)
-        # client.code=(params[:code])
-        # # p code = params[:code]
-        # p token = client.fetch_access_token!
     end
 
     def oauth2callback
         logger.info "***********************************"
         logger.info  params[:code]
-        # if Code.first.blank?
-        #      @code = Code.new(code: params[:code])
-        #      @code.save
-        #  else
-        #     @code = Code.first
-        #     @code = @code.update(code: params[:code])
-        # end
-
+        
          client = Signet::OAuth2::Client.new(
             client_id: "687842974914-3i5h5geogqp2tu7anr8gf3rqqfc03h8s.apps.googleusercontent.com",
             client_secret: "ZnOGPGeQykb_XaTpPwyedwQ7",
             token_credential_uri: "https://accounts.google.com/o/oauth2/token",
-            grant_type: 'authorization_code',
+            grant_type: 'refresh_token',
             redirect_uri: "http://youtube.aggso.com/auth/oauth2callback")
 
         client.code=(params[:code])
