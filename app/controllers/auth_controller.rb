@@ -23,7 +23,8 @@ class AuthController < ApplicationController
              @code = Code.new(code: params[:code])
              @code.save
          else
-            @code = Code.update(code: params[:code])
+            @code = Code.first
+            @code = @code.update(code: params[:code])
             @code.save
         end
         
