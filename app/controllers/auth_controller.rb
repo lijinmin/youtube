@@ -9,6 +9,7 @@ class AuthController < ApplicationController
         redirect_uri: "http://youtube.aggso.com/auth/oauth2callback",
         scope: "https://www.googleapis.com/auth/youtube",
         token_credential_uri: "https://accounts.google.com/o/oauth2/token")
+        options = {:response_type=>"code",approval_prompt: :force,access_type: :offline}
         @res = client.authorization_uri().to_s
     end
 
@@ -23,7 +24,7 @@ class AuthController < ApplicationController
             redirect_uri: "http://youtube.aggso.com/auth/oauth2callback")
 
         client.code=(params[:code])
-        logger.info client.grant_type=('refresh_token')
+        logger.info client.grant_type=('authorization_code')
 
         logger.info res = client.fetch_access_token!
   

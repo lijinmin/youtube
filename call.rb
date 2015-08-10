@@ -12,12 +12,12 @@ def create_url
     authorization_uri: "https://accounts.google.com/o/oauth2/auth?",
     client_id: "687842974914-3i5h5geogqp2tu7anr8gf3rqqfc03h8s.apps.googleusercontent.com",
     client_secret: "ZnOGPGeQykb_XaTpPwyedwQ7",
-    redirect_uri: "http://whtest.aggso.com/auth/oauth2callback",
+    redirect_uri: "http://youtube.aggso.com/auth/oauth2callback",
     scope: "https://www.google.com/m8/feeds/")
-    options = {:response_type=>"code"}
+    options = {:response_type=>"code",approval_prompt: :force,access_type: :offline}
     p res = client.authorization_uri(options).to_s
 end
-# create_url
+create_url
 
 def access_token
     client = Signet::OAuth2::Client.new(
@@ -25,9 +25,9 @@ def access_token
         client_secret: "ZnOGPGeQykb_XaTpPwyedwQ7",
         token_credential_uri: "https://accounts.google.com/o/oauth2/token",
         )
-    client.code=("4/UaF-2CD9v9Hmdf0hdGfuFuWZmGLgBQOvTPuPIyMmA6w")
+    client.code=("4/6tdG_KaKUMxqATtigCwP41DLCgqDQ2ms8SLMqxIUCe0")
     client.grant_type=('authorization_code')
-    client.redirect_uri=("http://whtest.aggso.com/auth/oauth2callback")
+    client.redirect_uri=("http://youtube.aggso.com/auth/oauth2callback")
 
     p res = client.fetch_access_token!
 end
