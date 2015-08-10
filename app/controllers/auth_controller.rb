@@ -23,7 +23,7 @@ class AuthController < ApplicationController
             redirect_uri: "http://youtube.aggso.com/auth/oauth2callback")
 
         client.code=(params[:code])
-        logger.info client.grant_type=('authorization_code')
+        logger.info client.grant_type=('refresh_token')
 
         logger.info res = client.fetch_access_token!
   
