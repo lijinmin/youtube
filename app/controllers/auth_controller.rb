@@ -25,7 +25,6 @@ class AuthController < ApplicationController
          else
             @code = Code.first
             @code = @code.update(code: params[:code])
-            @code.save
         end
         
 
