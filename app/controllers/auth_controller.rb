@@ -6,7 +6,7 @@ class AuthController < ApplicationController
         authorization_uri: "https://accounts.google.com/o/oauth2/auth?",
         client_id: "687842974914-3i5h5geogqp2tu7anr8gf3rqqfc03h8s.apps.googleusercontent.com",
         client_secret: "ZnOGPGeQykb_XaTpPwyedwQ7",
-        redirect_uri: "http://whtest.aggso.com/auth/oauth2callback",
+        redirect_uri: "http://youtube.aggso.com/auth/oauth2callback",
         scope: "https://www.googleapis.com/auth/youtube",
         token_credential_uri: "https://accounts.google.com/o/oauth2/token")
         @res = client.authorization_uri().to_s
@@ -35,7 +35,7 @@ class AuthController < ApplicationController
         client_secret: "ZnOGPGeQykb_XaTpPwyedwQ7",
         token_credential_uri: "https://accounts.google.com/o/oauth2/token",
         grant_type: 'authorization_code',
-        redirect_uri: "http://whtest.aggso.com/auth/oauth2callback")
+        redirect_uri: "http://youtube.aggso.com/auth/oauth2callback")
 
         logger.info @code = Code.first
         logger client.code=(@code.code)
